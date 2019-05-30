@@ -1,0 +1,10 @@
+kind: pipeline
+name: default
+
+steps:
+- name: Unit test
+  user: root
+  image: gradle:5.4.1-jdk8
+  commands:
+  - gradle --stop
+  - gradle test
