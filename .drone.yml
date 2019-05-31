@@ -2,9 +2,24 @@ kind: pipeline
 name: default
 
 steps:
-- name: Unit test
+- name: Unit test jdk8
   user: root
   image: gradle:5.4.1-jdk8
   commands:
-  - gradle --stop
+  - ls -al
+  - apt-get update && apt-get -y install openjfx openjfx-source git
+  - gradle test
+- name: Unit test jdk11
+  user: root
+  image: gradle:5.4.1-jdk11
+  commands:
+  - ls -al
+  - apt-get update && apt-get -y install openjfx openjfx-source git
+  - gradle test
+- name: Unit test jdk12
+  user: root
+  image: gradle:5.4.1-jdk12
+  commands:
+  - ls -al
+  - apt-get update && apt-get -y install openjfx openjfx-source git
   - gradle test
